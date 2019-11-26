@@ -1,0 +1,4 @@
+¿Porque se prefiere la recursión de cola a la recursión iterativa?
+Porque no pone en peligro el desbordamiento de la pila (error stackoverflow) y resolvemos el problema desde una base.o
+¿Que efectos tiene la recursion ineficiente sobre el stack de ejecuciones de Java?
+Genera un problema de desbordamiento por el numero de llamadas a la pil (stackoverflow)

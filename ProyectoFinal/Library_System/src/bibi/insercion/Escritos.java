@@ -1,8 +1,10 @@
 package bibi.insercion;
+import java.io.*;
 
 
+public abstract class Escritos implements Serializable{
 
-public abstract class Escritos{
+
 
   /**
   *Ficha sobre el libro
@@ -50,11 +52,13 @@ public abstract class Escritos{
   */
   private String noTotalEjemplares;
 
-
+  protected String db="db.ser";
   /**
   *Institucion de la que proviene
   */
   private String institucion;
+
+
   /**
   *Constructor de un Libro Revista
   *
@@ -69,6 +73,7 @@ public abstract class Escritos{
   *@param noTotalEjemplares Número total de Ejemplares
   */
   public Escritos(int tipo,String autores, String titulo, String tema, String editorial, String anioPublicacion, String edicion, String noPags, String noTotalEjemplares){
+
     this.autores=autores;
     this.titulo=titulo;
     this.tema=tema;
@@ -77,21 +82,23 @@ public abstract class Escritos{
     this.edicion=edicion;
     this.noPags=noPags;
     this.noTotalEjemplares=noTotalEjemplares;
+
+
   }
 
   /**
   *Constructor de un Periódico
   *
   *@param tipo Tipo de texto
-  *@param editorial editorial del Libro
-  *@param titulo titulo del libro
+  *@param editorial editorial del Periodico
+  *
   *@param diaPublicacion Dia de la publicacion
-  *@param mesPublicacion tema del Libro
+  *@param mesPublicacion  mes de publicacion
   *@param anioPublicacion año de publicacion
-  *@param edicion Edición del Libro
+  *@param edicion Edición del periodico
   *@param noTotalEjemplares Número total de Ejemplares
   */
-  public Escritos(int tipo,String Editorial, String diaPublicacion, String mesPublicacion, String anioPublicacion, String edicion, String noTotalEjemplares ){
+  public Escritos(int tipo,String editorial, String diaPublicacion, String mesPublicacion, String anioPublicacion, String edicion, String noTotalEjemplares ){
     this.editorial=editorial;
     this.titulo=titulo;
     this.diaPublicacion=diaPublicacion;
@@ -122,70 +129,119 @@ public abstract class Escritos{
   }
 
   /**
-  *
+  *Muestra la ficha
+  *@param tipo tipo 
   */
   public void setFicha(int tipo){
     StringBuilder sb = new StringBuilder();
     String tp="";
     switch (tipo){
     case 1 :
-    tp = "Libro \n";
+    tp = "Libro \t";
     break;
 
     case 2:
-    tp = "Revista \n";
+    tp = "Revista \t";
     break;
     case 3:
-    tp = "Periódico \n";
+    tp = "Periódico \t";
     break;
     case 4:
-    tp = "Artículo de Investigación \n";
+    tp = "Artículo de Investigación \t";
     break;
     }
     String toVolcate="\n";
-    sb.append("Tipo de Material:"+ tp);
-
+    sb.append("Tipo de Material:\t");
+     sb.append(tp);
+     sb.append(toVolcate);
     if(tipo != 3){
-      sb.append("Autores:" + autores +toVolcate);
-        sb.append("Título:"+ titulo +toVolcate);
+      sb.append("Autores:");
+      sb.append("\t");
+      sb.append(autores);
+      sb.append(toVolcate);
+        sb.append("Título:\t");
+        sb.append(titulo);
+        sb.append(toVolcate);
         if(tipo == 1){
-          sb.append("Tema:"+ tema + toVolcate);
+          sb.append("Tema:\t");
+          sb.append(tema+"\n");
+
         }
     }
 
-    if(tipo !=4)
-      sb.append("Editorial: " + editorial+toVolcate);
+    if(tipo !=4){
+      sb.append("Editorial:\t");
+       sb.append( editorial+"\n");
+     }
+    if(tipo == 3){
+      sb.append("Día de publicación:\t");
+      sb.append(diaPublicacion +"\n");
+    }
 
 
-    if(tipo == 3)
-      sb.append("Día de publicación"+ diaPublicacion+toVolcate);
+    if(tipo == 2){
+    sb.append("Mes de publicación: \t");
+     sb.append(tema +"\n");
+   }
 
-    if(tipo == 2)
-    sb.append("Mes de publicación" + tema + toVolcate);
+    if(tipo==3){
+    sb.append("Mes de publicación:\t");
+     sb.append( mesPublicacion);
+      sb.append(toVolcate);
+    }
 
-    if(tipo==3)
-    sb.append("Mes de publicación" + mesPublicacion + toVolcate);
+    if(tipo==4){
+    sb.append("Institución de publicación:\t");
+    sb.append(institucion);
+     sb.append(toVolcate);
+   }
+    sb.append("Año de publicación:\t ");
+    sb.append(anioPublicacion);
+    sb.append(toVolcate);
 
-    if(tipo==4)
-    sb.append("Institución de publicación"+ institucion + toVolcate);
-
-    sb.append("Año de publicación: "+ anioPublicacion + toVolcate);
-
-    if(tipo != 4)
-    sb.append("Número de Edición" + edicion + toVolcate);
+    if(tipo != 4){
+    sb.append("Número de Edición : \t");
+     sb.append(edicion);
+      sb.append(toVolcate);
+    }
 
 
-    if(tipo==1 || tipo==2)
-    sb.append("Número de páginas" + noPags+ toVolcate);
+    if(tipo==1 || tipo==2){
+    sb.append("Número de páginas : \t");
+    sb.append(noPags);
+    sb.append(toVolcate);
+    }
 
-    sb.append("Número total de Ejemplares"+ noTotalEjemplares + toVolcate);
+    sb.append("Número total de Ejemplares : \t");
+    sb.append(noTotalEjemplares);
+     sb.append(toVolcate);
 
     ficha= sb.toString().toUpperCase();
 
   }
 
+  public void setNoTotalEjemplares(int s){
+    this.noTotalEjemplares=String.valueOf(s);
+  }
+  public void setNoTotalEjemplares(int s , int t){
+    this.noTotalEjemplares=String.valueOf(s+t);
+  }
 
+  public String noTotalEjemplares(){
+    return noTotalEjemplares;
+  }
 
+  public String getAutor(){
+    return autores;
+  }
+
+  public int getMes(){
+    return Integer.parseInt(mesPublicacion);
+  }
+
+  public String getFicha(){
+    return ficha;
+  }
 
 
 

@@ -43,11 +43,11 @@ private LinkedList myOwnList=null;
         archivo = new FileOutputStream(fl);
         escritor = new ObjectOutputStream(archivo);
         Iterator ita = lita.iterator();
-        while(ita.hasNext()){
+
           //System.out.println(ita.toString());
         escritor.writeObject(ita.next());
 
-      }
+
     }catch(NullPointerException np){
         System.out.println(np);
 

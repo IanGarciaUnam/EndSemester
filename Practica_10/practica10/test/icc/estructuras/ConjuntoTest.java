@@ -16,10 +16,10 @@ import icc.base.*;
 */
 public class ConjuntoTest extends AbstractSetTestA{
 
-    public AbstractSet<String> getAbstractSet(){
-        return new Conjunto<>();
-    }
 
+  public AbstractSet<String> getAbstractSet(){
+      return new Conjunto<>();
+  }
     public Conjunto<Persona> getConjunto(){
         return new Conjunto<>();
     }

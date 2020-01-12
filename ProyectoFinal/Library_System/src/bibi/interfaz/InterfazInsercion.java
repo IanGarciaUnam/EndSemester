@@ -1,13 +1,21 @@
 package bibi.interfaz;
 
 import java.util.*;
-import bibi.controlador.Controlador;
+import bibi.interfaz.InsertWrittens.*;
+
 public class InterfazInsercion{
   private boolean key=true;
+
+  WrittenLibro w = new WrittenLibro();
+  WrittenRevista v = new WrittenRevista();
+  WrittenPeriodico p = new WrittenPeriodico();
+  WrittenArticuloInvestigacion a = new WrittenArticuloInvestigacion();
+  WrittenDiscoMusica d = new WrittenDiscoMusica();
+  WrittenPelicula m = new WrittenPelicula();
 /**
 *@author Ian_Garcia
 *run - muestra el menú en pantalla y procesa lo devuelto por
-* @param q - Guarda el valor de retorno de la funcion getInt
+* 
 */
   public  void run(){
 
@@ -43,29 +51,33 @@ do{
 
        case 1 :
        System.out.println("Ingresando Libros");
-       Controlador c = new Controlador();
-       c.forLibro();
+       w.process("Libro");
 
         break;
 
         case 2:
         System.out.println("Ingresando Revistas");
+        v.process("Revista");
         break;
 
         case 3:
         System.out.println("Ingresando Periódicos");
+        p.process("Periodico");
         break;
 
         case 4:
         System.out.println("Ingresando Artículos de Investigación");
+        a.process("ArticuloInvestigacion");
         break;
 
         case 5:
         System.out.println("Ingresando Películas");
+        m.process("Pelicula / Filme");
         break;
 
         case 6:
         System.out.println("Ingresando Discos de Música");
+        d.process("Disco de Música");
         break;
 
        default : System.out.println("Ingresa SOLO alguna de las opciones especificadas");
@@ -91,8 +103,14 @@ do{
 do{
     System.out.println(whatsUp);
   if(to_Do.hasNextInt()){
+
     w=to_Do.nextInt();
-  al = false;
+    if(w>=0){
+        al = false;
+    }else{
+      al=true;
+    }
+
 }else{ // NO se ha ingresado un entero
     System.out.println(mistakeDone);
     to_Do.next();//Liberamos el Buffer

@@ -90,12 +90,8 @@
         <delete dir="${build.test}"/>
         <delete dir="${tests.report}"/>
         <delete dir="${docs}"/>
-        <delete>
-            <fileset dir="." includes="**/*~" defaultexcludes="false" />
-        </delete>
-        <delete>
-            <fileset dir="." includes="**/*.ser" defaultexcludes="false" />
-        </delete>
+    
+
     </target>
 
  <target name="docs" description="generate javadoc" >

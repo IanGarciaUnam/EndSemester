@@ -1,6 +1,11 @@
 package bibi.interfaz;
 
 import java.util.*;
+import bibi.estructuras.*;
+import java.io.*;
+
+
+
 public class Interfaz {
   private boolean key=true;
 /**
@@ -8,7 +13,12 @@ public class Interfaz {
 *run - muestra el menú en pantalla y procesa lo devuelto por
 * @param q - Guarda el valor de retorno de la funcion getInt
 */
+  Object obj=null;
+
+
+
   public  void run(){
+
 
 do{
     for(int i=0;i<=50; i++){
@@ -28,13 +38,16 @@ do{
     System.out.println("Bienvenido usuari@ a continuación seleccione una opción del menú");
     System.out.println("[0]...............................Salir");
     System.out.println("[1]...............................Realizar una inserción de Nuevo Material");
-    System.out.println("[2]...............................Realizar Búsquedas");
+    System.out.println("[2]...............................Leer todo el archivo");
+    System.out.println("[3]...............................Realizar Búsquedas");
+
+
 
       int q=getInt("Siga las Instrucciones atentamente","NO HAS INGRESADO UNA OPCIÓN VÁLIDA VUELVE A INTENTARLO");
 
      switch(q){
        case 0:
-       System.out.println("Saliendo del Programa");
+         System.out.println("Saliendo del Programa");
        key=false;
        break;
 
@@ -45,7 +58,14 @@ do{
         break;
 
         case 2:
+        InterfazVista iv = new InterfazVista();
+        iv.run();
+        System.out.println("-------------------END LINE--------------------");
+        break;
+
+        case 3:
         InterfazBusqueda buscando = new InterfazBusqueda();
+        
         buscando.run();
         break;
 
@@ -55,6 +75,14 @@ do{
 
 
     }
+
+
+
+
+
+
+
+
 /**
 *Procesa la información, verifica la correctez de lo introducido y lo devuelve si es que afirmativamente es un entero
 *
@@ -66,15 +94,15 @@ do{
 	public int getInt(String whatsUp, String mistakeDone){
 	   Scanner to_Do = new Scanner(System.in);
      boolean al=true;
-	int w=0;
+	    int w=0;
 
 
-do{
+  do{
     System.out.println(whatsUp);
   if(to_Do.hasNextInt()){
     w=to_Do.nextInt();
   al = false;
-}else{ // NO se ha ingresado un entero
+    }else{ // NO se ha ingresado un entero
     System.out.println(mistakeDone);
     to_Do.next();//Liberamos el Buffer
 
@@ -84,8 +112,4 @@ do{
 
 	}
 
-
-
-
-
-}
+  }

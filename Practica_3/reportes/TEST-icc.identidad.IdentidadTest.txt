@@ -1,0 +1,21 @@
+Testsuite: icc.identidad.IdentidadTest
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.061 sec
+------------- Standard Output ---------------
+Curp: Obtiene el inicio del curp..
+--------------------Produccion de CURP-------------------------------
+JURP140923M
+------------------Produccion de SB en Test ----------------------
+JURP14923M
+Año:14	Mes:9	Dia:23
+[0.0/1.0]
+==============================
+Test: 0/1    Points: 0.0/1.0  -->  0.0
+==============================
+------------- ---------------- ---------------
+
+Testcase: sumaConmutativaTest took 0.009 sec
+	FAILED
+expected:<JURP14[0]923M> but was:<JURP14[]923M>
+junit.framework.AssertionFailedError: expected:<JURP14[0]923M> but was:<JURP14[]923M>
+	at icc.identidad.IdentidadTest.sumaConmutativaTest(Unknown Source)
+

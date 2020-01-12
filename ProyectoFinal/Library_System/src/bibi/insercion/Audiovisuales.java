@@ -1,8 +1,8 @@
 package bibi.insercion;
+import java.io.*;
 
 
-
-public abstract class Audiovisuales{
+public abstract class Audiovisuales implements Serializable{
 
   /**
   *Ficha sobre el material
@@ -41,6 +41,7 @@ public abstract class Audiovisuales{
   */
   private String genMusical;
 
+  private String tp;
 
   /**
   *Constructor de medios Audiovisuales peliculas
@@ -58,11 +59,13 @@ public abstract class Audiovisuales{
     this.producers=producers;
     this.anioPosted=anioPosted;
     this.numEjemplares=numEjemplares;
+    tp="Pelicula";
+    setFicha(false);
   }
 
 
   /**
-  *Constructor de medios Audiovisuales peliculas
+  *Constructor de medios Audiovisuales Discos de Musica
   *
   *@param titulo Título
   *@param bandName nombre de la banda
@@ -79,7 +82,70 @@ public abstract class Audiovisuales{
     this.producers=producers;
     this.anioPosted=anioPosted;
     this.numEjemplares=numEjemplares;
+    tp="Disco de Música";
+    setFicha(true);
   }
+
+
+    public void setFicha(boolean tipo){
+      StringBuilder sb = new StringBuilder();
+        String toVolcate="\n";
+      if(tipo){
+
+        sb.append("Tipo de Material:\t");
+         sb.append(tp);
+         sb.append(toVolcate);
+         sb.append("Nombre de la Banda:");
+         sb.append("\t");
+         sb.append(chiefs);
+         sb.append(toVolcate);
+           sb.append("Genero Musica:\t");
+           sb.append(genMusical);
+           sb.append(toVolcate);
+           sb.append("Productores:\t");
+           sb.append(producers);
+           sb.append(toVolcate);
+           sb.append("Año de publicación:\t");
+           sb.append(anioPosted);
+           sb.append(toVolcate);
+           sb.append("Número total de ejemplares:\t");
+           sb.append(numEjemplares);
+           sb.append(toVolcate);
+           ficha= sb.toString().toUpperCase();
+      }else{
+
+
+        sb.append("Tipo de Material:\t");
+         sb.append(tp);
+         sb.append(toVolcate);
+         sb.append("Nombre / Título:");
+         sb.append("\t");
+         sb.append(titulo);
+         sb.append(toVolcate);
+           sb.append("Directores:\t");
+           sb.append(chiefs);
+           sb.append(toVolcate);
+           sb.append("Productores:\t");
+           sb.append(producers);
+           sb.append(toVolcate);
+           sb.append("Año de publicación:\t");
+           sb.append(anioPosted);
+           sb.append(toVolcate);
+           sb.append("Número total de ejemplares:\t");
+           sb.append(numEjemplares);
+           sb.append(toVolcate);
+           ficha= sb.toString().toUpperCase();
+      }
+
+
+
+    }
+
+
+
+    public String getFicha(){
+      return ficha;
+    }
 
 
 }

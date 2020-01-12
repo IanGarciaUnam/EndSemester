@@ -38,17 +38,18 @@ public class SearchByName<E extends String> implements Searcher<E>{
      int run=0;
      int time=0;
       getIt =sb;
+      sbCompare= getIt;
       do{
 
         try{
           toUbicate=getIt.indexOf(n.toUpperCase());
-        if(toUbicate !=0){
+        if(toUbicate <0 ){
           if(toUbicate<getIt.length() ){
             int difference=(getIt.length()-1)-toUbicate;
 
-              toCut = getIt.substring(run,difference-5);
+              toCut = getIt.substring(run,difference);
           }else{
-              toCut = getIt.substring(run,toUbicate);
+            toCut = getIt.substring(run,toUbicate);
           }
 
           System.out.println("Resultados de Búsqueda:\n"+ toCut);
@@ -63,17 +64,17 @@ public class SearchByName<E extends String> implements Searcher<E>{
 
 
         }catch(Exception e){
-            System.out.println(e);
-          }
-              time++;
+          System.out.println("\t^ ^ ^ ^ ^Resultados Semejantes ^ ^ ^ ^ ^ ^");
+          toUbicate=-1;
+            //System.out.println(e);
+          }finally{
+            time++;
+                System.out.println("_________________________END LINE__________________________");
 
-              if(time>=getIt.length() ){
-                System.out.println("No Encontrado");
-                System.out.println("Quizá quisiste decir:\n"+ sb.toString());
-                f=false;
+            }
 
-              }
-        }while(time<(getIt.length()-1) && toUbicate < getIt.length()-1);
+
+        }while(time<(getIt.length()-1) && toUbicate < getIt.length()-1 && toUbicate>1);
 
         return f;
       }

@@ -66,7 +66,7 @@ do{
          case 3:
 
          String tittle="Titulo";
-         System.out.println("Búsqueda Por Autor");
+         System.out.println("Búsqueda Por Título");
          System.out.println("Ingresa el caracter, o palabra que desees buscar y presiona enter");
          Scanner sti = new Scanner(System.in);
          String title= sti.nextLine();
@@ -79,7 +79,7 @@ do{
           case 4:
 
           String tema="Tema";
-          System.out.println("Búsqueda Por Autor");
+          System.out.println("Búsqueda Por Tema");
           System.out.println("Ingresa el caracter, o palabra que desees buscar y presiona enter");
           Scanner st = new Scanner(System.in);
           String sita = st.nextLine();
@@ -88,6 +88,21 @@ do{
           SearchByName<String> se = new SearchByName<>();
             System.out.println(se.search(tema+":\t"+tema.toUpperCase()));
            break;
+
+           case 5:
+
+           String teema="Institución";
+           System.out.println("Búsqueda Por Institución");
+           System.out.println("Ingresa el caracter, o palabra que desees buscar y presiona enter");
+           Scanner stir = new Scanner(System.in);
+           String sitta = stir.nextLine();
+
+           //Serializer serializer = new Serializer();
+           SearchByName<String> ser = new SearchByName<>();
+             System.out.println(ser.search(teema+":\t"+teema.toUpperCase()));
+            break;
+
+
 
 
 

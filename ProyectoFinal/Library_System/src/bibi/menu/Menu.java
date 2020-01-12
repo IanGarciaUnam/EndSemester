@@ -73,16 +73,8 @@ public class Menu{
              obj=serializer.read("db.csv");
              oc=serializer.read("temp.tmp");
              cPrueba.add(serializer.read("temp.tmp"));
-            // conjunto.add(obj);
 
-        /**     if(oc.equals(obj)){
-               System.out.println("Sin cambios agregados");
-             }else{
-               conjunto.add(obj);
-               conjunto.add(oc);
-             }
-**/
-             if(!cPrueba.isEmpty()){
+         if(!cPrueba.isEmpty()){
                //conjunto.add(serializer.read("temp.tmp"));
                conjunto.add(serializer.read("db.csv"));
 
